@@ -12,4 +12,5 @@ This repository follows DSA using Python.
 
 Every Leetcode Daily challenge questions will be Explained here.
 
+Got to [Resources](./Resources) for materials to refer
 Feel free to give a pull request if you want to contribute in other languages or want to improve this repository.
