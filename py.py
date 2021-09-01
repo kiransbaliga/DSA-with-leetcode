@@ -1,10 +1,13 @@
 class Solution:
-    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
-        # the logic is to find the min of the options cause thats the part which is incremented the most times. 
-        # We also have to check if ops contain anythong ass well.
-        if not ops:return m*n
-        a,b=m,n
-        for i,j in ops:
-            a=min(a,i)
-            b=min(b,j)
-        return a*b   
+    def arrayNesting(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = 1
+        for i in range(n):
+            j = 0            # j is the current length of the sequence
+            while nums[i]!= -1: 
+                temp = i   
+                j+=1         # update j 
+                i = nums[i]  # goes to nums[nums[i]]
+                nums[temp] = -1 # mark visited
+            res = max(res,j) 
+        return res
