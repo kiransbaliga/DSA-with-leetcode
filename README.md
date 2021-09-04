@@ -8,7 +8,7 @@ This repository is for those who want to learn **Data Structures and Algorithms*
 This repository follows DSA using Python.
 
 > # Getting Started
-[Click here Leetcode.ipynb](./LeetCode.ipynb) to get Started.
+[Click here Leetcode.ipynb](./LeetCode/Aug_end.ipynb) to get Started.
 
 Every Leetcode Daily challenge questions will be Explained here.
 

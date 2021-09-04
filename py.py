@@ -1,21 +1,34 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-        def formtree(start,end): 
-            if start==end: return None   # to check if the tree is empty
-            res=[]                       
-            for i in range(start,end):      # loop each number 
-                for l in formtree(start,i) or [None]:  # form to the left of the tree i.e. for numbers less than the selected number
-                    for r in formtree(i+1,end) or [None]: # form to the right of the tree i.e. for numbers greater than the selected number
-                        node= TreeNode(i)   # create a node
-                        node.left=l     
-                        node.right=r
-                        res.append(node)
-            return res
-        return formtree(1,n+1)
-        
+def median(nums,k):
+    nums.sort()
+    if k%2==0:
+        return(nums[(k//2)-1])
+    else:
+        return(nums[k//2])        
+
+def subseq(arr,idx,subaarr,lst,k):
+    
+    if idx == len(arr):
+        if len(subaarr)==k:
+            lst.append(subaarr)
+    else:
+        subseq(arr,idx+1,subaarr,lst,k)
+        subseq(arr,idx+1,subaarr+[arr[idx]],lst,k)
+    
+t=int(input())
+for _ in range(t):
+    lst=[]
+    ans=[]
+    res=-1
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    subseq(a,0,[],lst,k)
+    for i in lst:
+        cpy=i
+        tmp=median(i,k)
+        if tmp>res:
+            res=tmp
+            ans=cpy
+    print(res)
+    print(*ans)
+
+                
