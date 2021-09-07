@@ -1,13 +1,33 @@
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution:
-    def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
-        finkey=keysPressed[0]
-        fintime=releaseTimes[0]
-        for i in range(1,len(releaseTimes)):
-            reltime=releaseTimes[i]-releaseTimes[i-1]
-            key=keysPressed[i]
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        newhead= ListNode()
+        def linkofthelink(orig,rev):
+            stack=[]
+            temp=orig
+            while temp:
+                stack.append(temp)
+                temp=temp.next
+            
+            temp=stack.pop()
+            rev=temp
+            
+            while stack:
+                i=stack.pop()  
+                temp.next=i    
+                temp= temp.next
+            
+            temp.next = None     
+            return rev
 
-            if reltime>fintime or (reltime==fintime and key>finkey):
-                fintime=reltime 
-                finkey=key  
-        return finkey
+        if head:
+            newhead = linkofthelink(head,newhead)
+            return newhead
+        else: 
+            return None
 
+            
