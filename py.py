@@ -1,22 +1,20 @@
 class Solution:
-    def maxTurbulenceSize(self, arr: List[int]) -> int:
-        if len(arr) < 2:
-            return len(arr)
-        res = 1
-        cur = 1
-        for i in range(1, len(arr)-1):
-            if cur>1:
-                if  (gt and arr[i] > arr[i+1]) or ((not gt) and arr[i] < arr[i+1]):
-                    cur += 1
-                    gt=not gt
-                elif arr[i]==arr[i+1]:
-                    res=max(res, cur)
-                    cur=1
-                else:
-                    res=max(res, cur)
-                    cur=2
-                    gt=arr[i]<arr[i+1]
-            elif arr[i]!=arr[i-1]:
-                cur=2
-                gt=arr[i]<arr[i+1]
-        return max(res, cur)
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        if len(nums1) < len(nums2):
+            small = sorted(nums1)
+            big = sorted(nums2)
+        else:
+            small = sorted(nums2)
+            big = sorted(nums1)
+        i = j = 0
+        res = []
+        while i < len(small) and j < len(big):
+            if small[i] == big[j]:
+                res.append(small[i])
+                i += 1
+                j += 1
+            elif small[i] < big[j]:
+                i += 1
+            else:
+                j += 1
+        return res
